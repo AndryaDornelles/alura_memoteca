@@ -63,7 +63,6 @@ const ui = {
         btnExcluir.onclick = async () => {
             try {
                 await api.excluirPensamento(pensamento.id);
-                ui.renderPensamentos();
             } catch (error) {
                 alert("Erro ao excluir pensamento");
             }
