@@ -14,10 +14,16 @@ const ui = {
 
     async renderPensamentos() {
         const listaPensamentos = document.getElementById("lista-pensamentos")
+        const mensagemVazia = document.getElementById("mensagem-vazia");
         listaPensamentos.innerHTML = ''
         try {
-            const pensamentos = await api.getPensamentos()
-            pensamentos.forEach(ui.addPensamentos)
+            const pensamentos = await api.getPensamentos();
+            pensamentos.forEach(ui.addPensamentos);
+            if(pensamentos.length === 0) {
+                mensagemVazia.style.display = "block";
+            } else {
+                mensagemVazia.style.display = "none";
+            }
         }
         catch {
             alert('Erro ao renderizar pensamentos')
